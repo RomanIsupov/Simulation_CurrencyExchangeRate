@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simulation_CurrencyExchangeRate", "Simulation_CurrencyExchangeRate.csproj", "{2093B5AF-0673-4180-8195-96478E6FD234}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2093B5AF-0673-4180-8195-96478E6FD234}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2093B5AF-0673-4180-8195-96478E6FD234}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2093B5AF-0673-4180-8195-96478E6FD234}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2093B5AF-0673-4180-8195-96478E6FD234}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4ECEE089-42EA-43F1-833F-F2DE80CACF5A}
+	EndGlobalSection
+EndGlobal
