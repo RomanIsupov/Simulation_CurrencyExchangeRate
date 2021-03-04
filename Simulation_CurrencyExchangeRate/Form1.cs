@@ -12,27 +12,66 @@ namespace Simulation_CurrencyExchangeRate
 {
     public partial class Form1 : Form
     {
+        private const double K = 0.14;
+        private Random randomGenerator = new Random(Guid.NewGuid().GetHashCode());
+
+        private int day = 0;
+        private double exchangeRate;
+        private double roubles = 10000D;
+        private double currency = 0D;
+
         public Form1()
         {
             InitializeComponent();
         }
 
-
-        const double k = 0.02;
-
         private void btCalculate_Click(object sender, EventArgs e)
         {
-            Random random = new Random();
-            double rate = (double)edRate.Value;
-            int days = (int)edDays.Value;
-            chart1.Series[0].Points.Clear();
-            chart1.Series[0].Points.AddXY(0, rate);
+            roubles = 10000D;
+            currency = 0D;
 
-            for (int day = 1; day <= days; day++)
+            chart1.Series[0].Points.Clear();
+            exchangeRate = (double)inputExchangeRate.Value;
+            chart1.Series[0].Points.AddXY(0, exchangeRate);
+            UpdateInterface();
+            if (!timer1.Enabled)
             {
-                rate = rate * (1 + k * (random.NextDouble() - 0.5));
-                chart1.Series[0].Points.AddXY(day, rate);
+                timer1.Start();
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            exchangeRate *= (1 + K * (randomGenerator.NextDouble() - 0.5));
+            chart1.Series[0].Points.AddXY(day, exchangeRate);
+        }
+
+        private void btBuy_Click(object sender, EventArgs e)
+        {
+            double amount = (double)currencyAmount.Value;
+            if (roubles >= amount * exchangeRate)
+            {
+                roubles -= amount * exchangeRate;
+                currency += amount;
+                UpdateInterface();
+            }
+        }
+
+        private void btSell_Click(object sender, EventArgs e)
+        {
+            double amount = (double)currencyAmount.Value;
+            if (currency >= amount)
+            {
+                currency -= amount;
+                roubles += amount * exchangeRate;
+                UpdateInterface();
+            }
+        }
+
+        private void UpdateInterface()
+        {
+            labRoubles.Text = $"Roubles: {Math.Round(roubles, 2)}";
+            labCurrency.Text = $"Currency: {Math.Round(currency, 2)}";
         }
     }
 }
